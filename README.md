@@ -1,5 +1,7 @@
 ## Up & Running
 
+Visit => [ensemble-energy](https://ensemble-energy.herokuapp.com/)
+
  1. Install dependencies:
 ```
 $ npm install
