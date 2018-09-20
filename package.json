@@ -7,8 +7,7 @@
     "start": "npm run build && node server/server.js",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
-    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
+    "heroku-prebuild": "npm install --only=dev"
   },
   "keywords": [],
   "author": "",
