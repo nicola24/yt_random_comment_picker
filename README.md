@@ -18,4 +18,4 @@ $ npm start
 - Bootstrap
 - Recharts
 
-![Alt text](https://i.imgur.com/eGcO1K8.png)
+![Alt text](https://i.imgur.com/99U6jKU.png)
