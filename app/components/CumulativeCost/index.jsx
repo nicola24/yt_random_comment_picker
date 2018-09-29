@@ -21,8 +21,8 @@ const CumulativeCost = ({ costTrends, turbineName }) => (
       <XAxis dataKey="serviceDate" />
       <YAxis unit="$" />
       <Tooltip />
-      <Line type="monotone" dataKey="extendedCost" stroke="#1c54b2" dot={false} />
-      <Line type="monotone" dataKey="labourCost" stroke="#82ca9d" dot={false} />
+      <Line type="monotone" dataKey="extendedCost" stroke="#da6642" dot={false} />
+      <Line type="monotone" dataKey="labourCost" stroke="#1c54b2" dot={false} />
     </LineChart>
   </div>
 );

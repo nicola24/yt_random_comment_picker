@@ -12,7 +12,7 @@ const TopRepairsTime = ({ topTime, turbineName }) => (
       <Pie
         data={topTime}
         outerRadius={80}
-        fill="#82ca9d"
+        fill="#da6642"
         label={arr => arr.serviceDesc}
         dataKey="duration"
         nameKey="serviceDesc"

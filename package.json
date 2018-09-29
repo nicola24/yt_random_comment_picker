@@ -1,24 +1,17 @@
 {
-  "name": "ensemble_coding_challenge",
+  "name": "ensemble_energy_dashboard",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ensemble Energy Dashboard",
   "main": "index.js",
   "scripts": {
+    "start": "node server/index.js",
+    "build": "webpack --config webpack.prod.js",
     "heroku-postbuild": "npm run build",
-    "start": "node server/server.js",
-    "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --config webpack.dev.js --hot"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nicolas Peyrichou ",
   "license": "ISC",
-  "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ]
-  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -42,7 +35,6 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-google-charts": "^3.0.8",
     "react-html-table-to-excel": "^2.0.0",
     "recharts": "^1.2.0",
     "style-loader": "^0.23.0"

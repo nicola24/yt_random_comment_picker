@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
-import CostServiceType from './CostServiceType';
-import CumulativeCost from './CumulativeCost';
-import TopRepairsCost from './TopRepairsCost';
-import TopRepairsTime from './TopRepairsTime';
-import DisplayDataTable from './DisplayDataTable';
-import Header from './Header';
+import CostServiceType from '../CostServiceType';
+import CumulativeCost from '../CumulativeCost';
+import TopRepairsCost from '../TopRepairsCost';
+import TopRepairsTime from '../TopRepairsTime';
+import DisplayDataTable from '../DisplayDataTable';
+import Header from '../Header';
 
-import maintainenceData from './data/maintainence_data.json';
+import maintainenceData from '../../data/maintainence_data.json';
+
 import {
   formatDataCostServiceType,
   formatDataCumulativeCost,
@@ -17,7 +18,7 @@ import {
   sortByTurbineName,
   filterWindfarmName,
   filterServiceType,
-} from './helper/helperFunctions';
+} from '../../helper/helperFunctions';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -35,7 +36,11 @@ class Dashboard extends Component {
       serviceType: [],
       currTurbine: '',
       buttonClick: 'false',
-      arrow: '↓',
+      arrowDevice: '↓',
+      arrowServ: '↓',
+      arrowStart: '↓',
+      arrowEnd: '↓',
+      arrowDuration: '↓',
     };
     this.handleChange = this.handleChange.bind(this);
     this.updateData = this.updateData.bind(this);
@@ -92,54 +97,52 @@ class Dashboard extends Component {
     const { value } = e.target;
 
     this.setState(state => ({ buttonClick: !state.buttonClick }));
-    if (!buttonClick) this.setState({ arrow: '↓' });
-    if (buttonClick) this.setState({ arrow: '↑' });
 
     if (!buttonClick) {
       if (value === 'device') { // device
         const newDataTable = dataTable.sort((a, b) => (
           Number(a.turbine_name.substring(3, 5)) - Number(b.turbine_name.substring(3, 5))
         ));
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowDevice: '↓' });
       } else if (value === 'sreqn') { // service_req_number
         const newDataTable = dataTable.sort((a, b) => a.service_req_number - b.service_req_number);
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowServ: '↓' });
       } else if (value === 'start') { // date start
         const newDataTable = dataTable.sort((a, b) => (
           Number(a.start_date.substring(0, 4)) - Number(b.start_date.substring(0, 4))
         ));
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowStart: '↓' });
       } else if (value === 'end') { // date end
         const newDataTable = dataTable.sort((a, b) => (
           Number(a.end_date.substring(0, 4)) - Number(b.end_date.substring(0, 4))
         ));
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowEnd: '↓' });
       } else if (value === 'duration') { // duration
         const newDataTable = dataTable.sort((a, b) => a.duration_mins - b.duration_mins);
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowDuration: '↓' });
       }
     } else if (buttonClick) {
       if (value === 'device') { // device
         const newDataTable = dataTable.sort((a, b) => (
           Number(b.turbine_name.substring(3, 5)) - Number(a.turbine_name.substring(3, 5))
         ));
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowDevice: '↑' });
       } else if (value === 'sreqn') { // service_req_number
         const newDataTable = dataTable.sort((a, b) => b.service_req_number - a.service_req_number);
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowServ: '↑' });
       } else if (value === 'start') { // date start
         const newDataTable = dataTable.sort((a, b) => (
           Number(b.start_date.substring(0, 4)) - Number(a.start_date.substring(0, 4))
         ));
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowStart: '↑' });
       } else if (value === 'end') { // date end
         const newDataTable = dataTable.sort((a, b) => (
           Number(b.end_date.substring(0, 4)) - Number(a.end_date.substring(0, 4))
         ));
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowEnd: '↑' });
       } else if (value === 'duration') { // duration
         const newDataTable = dataTable.sort((a, b) => b.duration_mins - a.duration_mins);
-        this.setState({ dataTable: newDataTable });
+        this.setState({ dataTable: newDataTable, arrowDuration: '↑' });
       }
     }
   }
@@ -155,24 +158,24 @@ class Dashboard extends Component {
       dataTable,
       windfarmList,
       serviceType,
-      arrow,
+      arrowDevice,
+      arrowServ,
+      arrowStart,
+      arrowEnd,
+      arrowDuration,
     } = this.state;
 
     return (
       <div className="bg-light">
-
-        <nav className="navbar fixed-top bg-light">
+        <nav className="navbar fixed-top bg-light border-bottom">
           <Header
             turbineList={turbineList}
             handleChange={this.handleChange}
             windfarmList={windfarmList}
           />
         </nav>
-
         <div className="container-fluid">
-
           <div className="row mt-4 mb-5" />
-
           <div className="row justify-content-center">
             <div className="col-auto card m-1">
               <TopRepairsCost
@@ -187,7 +190,6 @@ class Dashboard extends Component {
               />
             </div>
           </div>
-
           <div className="row justify-content-center">
             <div className="col-auto card m-1">
               <CumulativeCost
@@ -202,20 +204,21 @@ class Dashboard extends Component {
               />
             </div>
           </div>
-
           <div className="row justify-content-center">
             <div className="col-9 card m-1">
               <DisplayDataTable
                 tableData={dataTable}
                 handleClickSort={this.handleClickSort}
-                arrow={arrow}
+                arrowDevice={arrowDevice}
+                arrowServ={arrowServ}
+                arrowStart={arrowStart}
+                arrowEnd={arrowEnd}
+                arrowDuration={arrowDuration}
                 serviceType={serviceType}
               />
             </div>
           </div>
-
         </div>
-
       </div>
     );
   }

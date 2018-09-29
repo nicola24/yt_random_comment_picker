@@ -4,25 +4,17 @@ import PropTypes from 'prop-types';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import moment from 'moment';
 
-const styles = {
-  tableHead: {
-    fontSize: 12,
-  },
-  tableRow: {
-    fontSize: 11,
-  },
-  tableButton: {
-    fontSize: 11,
-    color: 'black',
-    fontWeight: 'bold',
-  },
-};
+import styles from './styles';
 
 const DisplayDataTable = ({
   tableData,
   handleClickSort,
-  arrow,
-  serviceType,
+  arrowDevice,
+  arrowServ,
+  arrowStart,
+  arrowEnd,
+  arrowDuration,
+  // serviceType,
 }) => (
   <div>
     {/* <div>
@@ -71,7 +63,7 @@ const DisplayDataTable = ({
         </div>
         <div className="col-auto align-self-center">
           <ReactHTMLTableToExcel
-            className="btn btn-outline-dark btn-sm"
+            className="btn btn-dark btn-sm"
             table="table"
             filename="ensemble_energy_data"
             sheet="ensemble_energy_data"
@@ -88,28 +80,28 @@ const DisplayDataTable = ({
             <th scope="col" style={styles.tableHead}>Asset</th>
             <th scope="col">
               <button onClick={handleClickSort} type="button" value="device" className="btn btn-link btn-sm" style={styles.tableButton}>
-                {`Device ${arrow}`}
+                {`Device ${arrowDevice}`}
               </button>
             </th>
             <th scope="col">
               <button onClick={handleClickSort} type="button" value="sreqn" className="btn btn-link btn-sm" style={styles.tableButton}>
-                {`Service Req No ${arrow}`}
+                {`Service Req No ${arrowServ}`}
               </button>
             </th>
             <th scope="col" style={styles.tableHead}>Service Description</th>
             <th scope="col">
               <button onClick={handleClickSort} type="button" value="start" className="btn btn-link btn-sm" style={styles.tableButton}>
-                {`Start Time ${arrow}`}
+                {`Start Time ${arrowStart}`}
               </button>
             </th>
             <th scope="col">
               <button onClick={handleClickSort} type="button" value="end" className="btn btn-link btn-sm" style={styles.tableButton}>
-                {`End Time ${arrow}`}
+                {`End Time ${arrowEnd}`}
               </button>
             </th>
             <th scope="col">
               <button onClick={handleClickSort} type="button" value="duration" className="btn btn-link btn-sm" style={styles.tableButton}>
-                {`Duration (hrs) ${arrow}`}
+                {`Duration (hrs) ${arrowDuration}`}
               </button>
             </th>
             <th scope="col" style={styles.tableHead}>SR Type</th>
@@ -137,9 +129,13 @@ const DisplayDataTable = ({
 
 DisplayDataTable.propTypes = {
   tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  serviceType: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // serviceType: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleClickSort: PropTypes.func.isRequired,
-  arrow: PropTypes.string.isRequired,
+  arrowDevice: PropTypes.string.isRequired,
+  arrowServ: PropTypes.string.isRequired,
+  arrowStart: PropTypes.string.isRequired,
+  arrowEnd: PropTypes.string.isRequired,
+  arrowDuration: PropTypes.string.isRequired,
 };
 
 export default DisplayDataTable;

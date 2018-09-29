@@ -1,15 +1,15 @@
 ## Up & Running
 
-Visit => [ensemble-energy](https://ensemble-energy.herokuapp.com/)
+Live demo visit => [ensemble-energy](https://ensemble-energy.herokuapp.com/)
 
  1. Install dependencies:
 ```
 $ npm install
 ```
 
- 2. Fire up server and generate bundle.js in production mode:
+ 2. Fire up Webpack Dev Server including React Hot Loader:
 ```
-$ npm start
+$ npm run dev
 ```
 
  - Once the server is running, you can visit `http://localhost:3000/`
@@ -20,4 +20,4 @@ $ npm start
 - Bootstrap
 - Recharts
 
-![Alt text](https://i.imgur.com/99U6jKU.png)
+![Alt text](https://i.imgur.com/tNigNhx.png)
