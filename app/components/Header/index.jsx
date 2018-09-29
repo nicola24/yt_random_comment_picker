@@ -8,7 +8,7 @@ const Header = ({
     <form>
       <div className="row">
         <div>
-          <img className="logo-dark ml-2" src="https://i.imgur.com/9dxPnvi.png" alt="logo" height="40" width="133" />
+          <img className="ml-4 mr-4" src="https://i.imgur.com/9dxPnvi.png" alt="logo" height="40" width="133" />
         </div>
         <div className="col-auto">
           <select className="form-control border border-primary">

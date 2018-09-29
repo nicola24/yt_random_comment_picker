@@ -1,6 +1,7 @@
 module.exports = {
+  mode: 'production',
   entry: [
-    './src/Index.jsx',
+    './app/app.jsx',
   ],
   module: {
     rules: [
@@ -22,8 +23,5 @@ module.exports = {
     path: `${__dirname}/dist`,
     publicPath: '/',
     filename: 'bundle.js',
-  },
-  devServer: {
-    contentBase: './dist',
   },
 };
