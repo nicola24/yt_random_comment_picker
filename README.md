@@ -1,8 +1,8 @@
 ## Up & Running
 
-Youtube Random Comment Picker is a react app that automatically and randomly pick a comment from a youtube video!
+Youtube Random Comment Picker is a react app that randomly pick a comment from a youtube video!
 
-Live demo visit => []()
+Live demo visit => [yt-random-comment-picker](https://yt-random-comment-picker.herokuapp.com/)
 
  1. Install dependencies:
 ```
