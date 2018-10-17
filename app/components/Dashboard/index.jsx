@@ -6,7 +6,6 @@ import Warning from '../Warning';
 import TableComments from '../TableComments';
 import Loading from '../Loading';
 
-import getAllPagesComments from '../../helper/fetch';
 import randomIndex from '../../helper/randomIndex';
 
 class Dashboard extends Component {
@@ -44,13 +43,14 @@ class Dashboard extends Component {
       const videoId = videoUrl.substring(32);
       this.setState({ fetchInProgress: true, comments: [] });
 
-      getAllPagesComments(videoId, '')
+      fetch(`getcomments/${videoId}`)
+        .then(res => res.json())
         .then(ytData => this.setState({
           comments: ytData,
           commentPicked: undefined,
           fetchInProgress: false,
         }))
-        .catch(() => this.setState({ error: 'error', fetchInProgress: false })); // if response if not 200 then error
+        .catch(() => this.setState({ error: 'error', fetchInProgress: false }));
     }
 
     e.preventDefault();

@@ -1,6 +1,7 @@
+const fetch = require('node-fetch');
+
 // const { apiKey } = require('./apiKey');
-// const apiKey = process.env.API_TOKEN; // heroku config var
-// console.log('API_TOKEN: ', process.env.API_TOKEN);
+const apiKey = process.env.API_TOKEN; // heroku config var
 
 const getOnePageComment = (videoId, pageToken) => {
   const url = [
@@ -8,7 +9,7 @@ const getOnePageComment = (videoId, pageToken) => {
     'part=snippet',
     'maxResults=100',
     `videoId=${videoId}`,
-    'key=AIzaSyB6elYqT4OpXRcl4LOWe-VVW7igwG7Zeeg', // `key=${apiKey}`
+    `key=${apiKey}`,
     `pageToken=${pageToken}`,
   ].join('&');
 
@@ -31,11 +32,4 @@ const getAllPagesComments = (videoId, pageToken) => {
     });
 };
 
-export default getAllPagesComments;
-
-// const request = async (vidId) => {
-//   const url = '';
-//   const response = await fetch(url);
-//   const json = await response.json();
-//   return json.items;
-// };
+module.exports = getAllPagesComments;

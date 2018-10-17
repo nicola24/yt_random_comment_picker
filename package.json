@@ -7,7 +7,8 @@
     "start": "node server/index.js",
     "build": "webpack --config webpack.prod.js",
     "heroku-postbuild": "npm run build",
-    "dev": "webpack-dev-server --config webpack.dev.js --hot"
+    "hotdev": "webpack-dev-server --config webpack.dev.js --hot",
+    "dev": "webpack --config webpack.dev.js -w"
   },
   "keywords": [],
   "author": "Nicolas Peyrichou ",
@@ -31,6 +32,7 @@
     "css-loader": "^1.0.0",
     "express": "^4.16.3",
     "moment": "^2.22.2",
+    "node-fetch": "^2.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
