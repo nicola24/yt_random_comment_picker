@@ -1,6 +1,5 @@
 // const { apiKey } = require('./apiKey');
 const apiKey = process.env.API_TOKEN; // heroku config var
-console.log('TOKEN: ', process.env.TOKEN);
 console.log('API_TOKEN: ', process.env.API_TOKEN);
 
 const getOnePageComment = (videoId, pageToken) => {
