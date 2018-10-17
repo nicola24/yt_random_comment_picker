@@ -1,7 +1,7 @@
 {
-  "name": "ensemble_energy_dashboard",
+  "name": "yt_random_comment_picker",
   "version": "1.0.0",
-  "description": "Ensemble Energy Dashboard",
+  "description": "yt_random_comment_picker",
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
