@@ -1,7 +1,6 @@
 // const { apiKey } = require('./apiKey');
-const apiKey = process.env.API_TOKEN; // heroku config var
-console.log('API_TOKEN: ', process.env.API_TOKEN);
-console.log('PORT: ', process.env.PORT);
+// const apiKey = process.env.API_TOKEN; // heroku config var
+// console.log('API_TOKEN: ', process.env.API_TOKEN);
 
 const getOnePageComment = (videoId, pageToken) => {
   const url = [
@@ -9,7 +8,7 @@ const getOnePageComment = (videoId, pageToken) => {
     'part=snippet',
     'maxResults=100',
     `videoId=${videoId}`,
-    `key=${apiKey}`,
+    'key=AIzaSyB6elYqT4OpXRcl4LOWe-VVW7igwG7Zeeg', // `key=${apiKey}`
     `pageToken=${pageToken}`,
   ].join('&');
 
