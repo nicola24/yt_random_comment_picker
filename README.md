@@ -1,6 +1,8 @@
 ## Up & Running
 
-Live demo visit => [ensemble-energy](https://ensemble-energy.herokuapp.com/)
+Youtube Random Comment Picker is a react app that automatically and randomly pick a comment from a youtube video!
+
+Live demo visit => []()
 
  1. Install dependencies:
 ```
@@ -12,12 +14,12 @@ $ npm install
 $ npm run dev
 ```
 
- - Once the server is running, you can visit `http://localhost:3000/`
+ - Once the server is running, you can visit `http://localhost:8080/`
 
 ## Composition
 - React
 - Webpack & Babel
 - Bootstrap
-- Recharts
+- Node & Express
 
-![Alt text](https://i.imgur.com/tNigNhx.png)
+![yrcp](https://i.imgur.com/opf7b5R.png)

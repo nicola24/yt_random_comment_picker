@@ -1,7 +1,6 @@
 module.exports = {
-    "extends": "airbnb",
-    // rule for in loop https://eslint.org/docs/rules/no-restricted-syntax
-    "rules": {
-      // "no-restricted-syntax": ["error", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"]
-    }
+  "extends": "airbnb",
+  "env": {
+    "browser": true, // prevent eslint from 'fetch is not defined'
+  }
 };
