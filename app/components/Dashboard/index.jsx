@@ -17,10 +17,12 @@ class Dashboard extends Component {
       error: '',
       commentPicked: undefined,
       fetchInProgress: false,
+      expanded: false,
     };
     this.fetchVideo = this.fetchVideo.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.pickComment = this.pickComment.bind(this);
+    this.handleExpand = this.handleExpand.bind(this);
   }
 
   handleInput(e) {
@@ -62,12 +64,17 @@ class Dashboard extends Component {
     this.setState({ commentPicked: comments[randomIndex(comments)] });
   }
 
+  handleExpand(e) {
+    this.setState(state => ({ [e]: !state[e] }));
+  }
+
   render() {
     const {
       comments,
       error,
       commentPicked,
       fetchInProgress,
+      expanded,
     } = this.state;
 
     return (
@@ -94,23 +101,30 @@ class Dashboard extends Component {
             <Loading />
           ) : (
             <div className="d-flex mt-5">
-              {comments.length === 0 ? '' : (
+              {comments.length === 0 ? null : (
                 <div className="flex-fill shadow p-3 rounded mr-3 bg-light">
                   <p className="h3 text-primary mb-4">{comments.length === 0 ? '' : `Complete: Loaded ${comments.length} Comments!`}</p>
-                  <button onClick={this.pickComment} type="button" className="btn btn-success btn-lg">
+                  <button onClick={this.pickComment} className="btn btn-success btn-lg" type="button">
                     Pick A Winner
+                  </button>
+                  <button onClick={() => this.handleExpand('expanded')} className="btn btn-success btn-lg ml-2" type="button">
+                    Display Comments
                   </button>
                 </div>
               )}
               <div className="mr-5 w-50 flex-fill">
-                {commentPicked === undefined ? '' : (
+                {commentPicked === undefined ? null : (
                   <Display comment={commentPicked.snippet.topLevelComment.snippet} />
                 )}
               </div>
             </div>
           )}
           {comments.length === 0 ? '' : (
-            <TableComments comments={comments} />
+            <div>
+              {!expanded ? null : (
+                <TableComments comments={comments} />
+              )}
+            </div>
           )}
         </div>
       </div>
