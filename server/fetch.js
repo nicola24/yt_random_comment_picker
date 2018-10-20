@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
 
-// const { apiKey } = require('./apiKey');
-const apiKey = process.env.API_TOKEN; // heroku config var
+const { apiKey } = require('./apiKey');
+// const apiKey = process.env.API_TOKEN; // heroku config var
 
-const getOnePageComment = (videoId, pageToken) => {
+const getOnePageComment = async (videoId, pageToken) => {
   const url = [
     'https://www.googleapis.com/youtube/v3/commentThreads?',
     'part=snippet',
@@ -13,8 +13,9 @@ const getOnePageComment = (videoId, pageToken) => {
     `pageToken=${pageToken}`,
   ].join('&');
 
-  // check if status is 200
-  return fetch(url).then(res => (res.status === 200 ? res.json() : null));
+  const response = await fetch(url);
+  const json = await response.json();
+  return json;
 };
 
 const getAllPagesComments = (videoId, pageToken) => {

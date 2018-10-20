@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
+    "nodemon": "nodemon server/index.js",
     "build": "webpack --config webpack.prod.js",
     "heroku-postbuild": "npm run build",
     "hotdev": "webpack-dev-server --config webpack.dev.js --hot",
-    "dev": "webpack --config webpack.dev.js -w"
+    "dev": "webpack --config webpack.dev.js --watch"
   },
   "keywords": [],
   "author": "Nicolas Peyrichou ",
