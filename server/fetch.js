@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
-const { apiKey } = require('./apiKey');
-// const apiKey = process.env.API_TOKEN; // heroku config var
+// const { apiKey } = require('./apiKey');
+const apiKey = process.env.API_TOKEN; // heroku config var
 
 const getOnePageComment = async (videoId, pageToken) => {
   const url = [
