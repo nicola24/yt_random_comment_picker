@@ -17,23 +17,12 @@ class Dashboard extends Component {
       error: '',
       commentPicked: undefined,
       fetchInProgress: false,
-      expanded: true, // TODO back to false
+      expanded: false,
     };
     this.fetchVideo = this.fetchVideo.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.pickComment = this.pickComment.bind(this);
     this.handleExpand = this.handleExpand.bind(this);
-  }
-
-  componentDidMount() { // TODO to be remove
-    fetch('getcomments/CE2b_-XfVDk&t=6s')
-      .then(res => res.json())
-      .then(ytData => this.setState({
-        comments: ytData,
-        commentPicked: undefined,
-        fetchInProgress: false,
-      }))
-      .catch(() => this.setState({ error: 'error', fetchInProgress: false }));
   }
 
   handleInput(e) {
