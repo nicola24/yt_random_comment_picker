@@ -1,16 +1,16 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
-const getAllPagesComments = require('./fetch');
+const router = require('./middlewares/router');
+const logger = require('./logger');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(bodyParser.json());
+
 app.use(express.static('dist'));
 
-app.get('/getcomments/:videoid', (req, res) => {
-  const { videoid } = req.params;
+app.use('/api', router);
 
-  getAllPagesComments(videoid, '').then(ytData => res.send(ytData));
-});
-
-app.listen(port, () => console.log(`*** App listening on port ${port}! ***`));
+app.listen(port, () => logger.appStarted(port));

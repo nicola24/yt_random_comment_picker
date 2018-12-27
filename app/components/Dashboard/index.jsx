@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Display from '../Display';
+import Winner from '../Winner';
 import Navbar from '../Navbar';
 import Warning from '../Warning';
 import TableComments from '../TableComments';
@@ -45,7 +45,7 @@ class Dashboard extends Component {
       const videoId = videoUrl.substring(32);
       this.setState({ fetchInProgress: true, comments: [] });
 
-      fetch(`getcomments/${videoId}`)
+      fetch(`/api/getcomments/${videoId}`)
         .then(res => res.json())
         .then(ytData => this.setState({
           comments: ytData,
@@ -114,7 +114,7 @@ class Dashboard extends Component {
               )}
               <div className="mr-5 w-50 flex-fill">
                 {commentPicked === undefined ? null : (
-                  <Display comment={commentPicked.snippet.topLevelComment.snippet} />
+                  <Winner comment={commentPicked.snippet.topLevelComment.snippet} />
                 )}
               </div>
             </div>
