@@ -22,16 +22,9 @@ router.route('/sms').post((req, res) => {
     .create({
       body: req.body.textMessage,
       from: twilioFrom,
-      statusCallback: 'http://localhost:3000/api/status',
       to: twilioTo,
     })
-    .then(message => res.send({ status: message.status }))
-    .done();
-});
-
-router.route('/status').post((req, res) => {
-  console.log(req.body);
-  res.send();
+    .done(() => res.send());
 });
 
 module.exports = router;
